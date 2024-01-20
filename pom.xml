@@ -8,7 +8,7 @@
     <artifactId>BaseProject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>base-project</name>
-    <description>Base Project</description>
+    <description>Base project base on spring boot</description>
 
     <properties>
         <java.version>1.17</java.version>
@@ -17,14 +17,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <springfox-swagger>2.9.2</springfox-swagger>
-        <hibernate.version>5.4.10.Final</hibernate.version>
-        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <hibernate.version>5.4.33</hibernate.version>
+        <spring-cloud.version>2020.0.6</spring-cloud.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.5.15</version>
     </parent>
 
     <dependencies>
@@ -119,25 +119,34 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-
-        <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox-swagger}</version>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox-swagger}</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
-            <version>${springfox-swagger}</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.21</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.21</version>
         </dependency>
 
         <dependency>
