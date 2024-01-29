@@ -10,12 +10,12 @@ import com.mazloom.exception.ResourceNotFoundException;
 import com.mazloom.message.FoodMessage;
 import com.mazloom.utils.ModelUtils;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Slf4j
+@Log4j2
 @Component
 @RequiredArgsConstructor
 public class FoodServiceImpl implements FoodService {

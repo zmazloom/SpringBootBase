@@ -21,9 +21,9 @@ import java.util.Collections;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${doc.private.username}")
+    @Value("${docs.private.username}")
     private String privateUsername;
-    @Value("${doc.private.password}")
+    @Value("${docs.private.password}")
     private String privatePassword;
 
     @Override
@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .contentSecurityPolicy("script-src 'self'");
 
         http.authorizeRequests()
-                .regexMatchers("\\/v2/api-docs\\?group=private(&.*|$)").authenticated()
+                .regexMatchers("\\/v1/api-docs\\?group=private(&.*|$)").authenticated()
                 .and()
                 .httpBasic();
     }

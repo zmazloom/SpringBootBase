@@ -1,6 +1,6 @@
 package com.mazloom.exception;
 
-import fanap.dining.message.ErrorMessage;
+import com.mazloom.message.ErrorMessage;
 import org.springframework.http.HttpStatus;
 
 public class InternalServerException extends ProjectRuntimeException {

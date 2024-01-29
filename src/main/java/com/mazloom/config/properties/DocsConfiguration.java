@@ -18,9 +18,7 @@ public class DocsConfiguration {
     private String docsPrivateUsername;
     @Value("${docs.private.password}")
     private String docsPrivatePassword;
-    @Value("${project.public-paths}")
-    private String swaggerPublicPaths;
-    @Value("${project.private-paths}")
+    @Value("${docs.private-paths}")
     private String swaggerPrivatePaths;
 
 }

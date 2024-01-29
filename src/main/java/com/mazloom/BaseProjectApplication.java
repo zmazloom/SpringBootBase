@@ -19,12 +19,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * 2024-01-24
  */
 
+@SpringBootApplication
 @EnableConfigurationProperties
 @EntityScan(basePackages = {"com.mazloom.domain.model"})
 @EnableJpaRepositories(basePackages = {"com.mazloom"})
-@SpringBootApplication(exclude = {
-        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class})
 public class BaseProjectApplication {
 
     private static String projectSessionId;

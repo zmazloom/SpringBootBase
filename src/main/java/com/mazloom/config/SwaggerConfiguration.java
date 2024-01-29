@@ -51,8 +51,9 @@ public class SwaggerConfiguration {
                 .groupName("public")
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(getPublicPaths())
-                .paths(getPrivatePaths().negate())
+                .paths(PathSelectors.any())
+                .paths(PathSelectors.regex("/error.*").negate())
+                .paths(PathSelectors.regex("/actuator.*").negate())
                 .build()
                 .host(projectConfiguration.getProjectUrlConfig())
                 .securitySchemes(Collections.singletonList(apiKey()))
@@ -68,9 +69,7 @@ public class SwaggerConfiguration {
                 .groupName("private")
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .paths(PathSelectors.regex("/error.*").negate())
-                .paths(PathSelectors.regex("/actuator.*").negate())
+                .paths(getPrivatePaths())
                 .build()
                 .host(projectConfiguration.getProjectUrlConfig())
                 .securitySchemes(Collections.singletonList(apiKey()))
@@ -161,10 +160,6 @@ public class SwaggerConfiguration {
 
     private @NotNull Predicate<String> getPrivatePaths() {
         return PathSelectors.ant(docsConfiguration.getSwaggerPrivatePaths());
-    }
-
-    private @NotNull Predicate<String> getPublicPaths() {
-        return PathSelectors.regex(docsConfiguration.getSwaggerPublicPaths());
     }
 
 }
