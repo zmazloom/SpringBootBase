@@ -1,5 +1,6 @@
 package com.mazloom.security;
 
+import com.mazloom.domain.vo.SocketPrincipal;
 import com.mazloom.utils.ModelUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHeaders;
@@ -20,8 +21,6 @@ import java.util.Collection;
 @Slf4j
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
-    private static final String TOKEN_BEARER_TYPE = "Bearer";
-
     public AuthorizationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
@@ -32,7 +31,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
                                     FilterChain filterChain) throws IOException, ServletException {
         String header = request.getHeader(HttpHeaders.AUTHORIZATION);
 
-        if (header == null || !header.startsWith(TOKEN_BEARER_TYPE)) {
+        if (header == null) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -50,13 +49,20 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
             try {
-                token = token.replace(TOKEN_BEARER_TYPE + " ", "");
                 if (ModelUtils.isEmpty(token))
                     return null;
 
                 //todo do authorization
 
-                return null;
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+
+                SocketPrincipal socketPrincipal = SocketPrincipal.builder()
+                        .name("username")
+                        .token(token)
+                        .activity("true")
+                        .build();
+
+                return new UsernamePasswordAuthenticationToken(socketPrincipal, token, authorities);
 
             } catch (Exception e) {
                 //nothing
