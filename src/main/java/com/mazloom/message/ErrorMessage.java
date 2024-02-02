@@ -17,7 +17,4 @@ public class ErrorMessage {
         return Translator.toLocale("error.resource.conflict", null);
     }
 
-    public static String unknownError() {
-        return Translator.toLocale("error.unknown", null);
-    }
 }

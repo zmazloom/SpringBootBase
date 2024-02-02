@@ -6,7 +6,7 @@ public class FoodMessage {
     }
 
     public static String foodNameIsDuplication() {
-        return Translator.toLocale("food.name.is.duplication", null);
+        return Translator.toLocale("food.name.is.duplicate", null);
     }
 
     public static String foodNotFound() {

@@ -1,6 +1,6 @@
 package com.mazloom.food;
 
-import com.mazloom.domain.model.Food;
+import com.mazloom.data.Food;
 import com.mazloom.domain.request.FoodRequest;
 import com.mazloom.domain.srv.FoodSrv;
 import com.mazloom.domain.vo.ItemsWithTotal;

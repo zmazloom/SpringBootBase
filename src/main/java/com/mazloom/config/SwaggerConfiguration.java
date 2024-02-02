@@ -50,7 +50,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("public")
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.mazloom"))
                 .paths(PathSelectors.any())
                 .paths(PathSelectors.regex("/error.*").negate())
                 .paths(PathSelectors.regex("/actuator.*").negate())
@@ -62,21 +62,22 @@ public class SwaggerConfiguration {
 
     }
 
-    @Bean
-    public Docket privateApi() {
-
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("private")
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(getPrivatePaths())
-                .build()
-                .host(projectConfiguration.getProjectUrlConfig())
-                .securitySchemes(Collections.singletonList(apiKey()))
-                .securityContexts(securityContexts())
-                .apiInfo(apiEndPointsInfo());
-
-    }
+    // TODO: you can set username and password for some APIs
+    //    @Bean
+    //    public Docket privateApi() {
+    //
+    //        return new Docket(DocumentationType.SWAGGER_2)
+    //                .groupName("private")
+    //                .select()
+    //                .apis(RequestHandlerSelectors.any())
+    //                .paths(getPrivatePaths())
+    //                .build()
+    //                .host(projectConfiguration.getProjectUrlConfig())
+    //                .securitySchemes(Collections.singletonList(apiKey()))
+    //                .securityContexts(securityContexts())
+    //                .apiInfo(apiEndPointsInfo());
+    //
+    //    }
 
     private ApiInfo apiEndPointsInfo() {
 

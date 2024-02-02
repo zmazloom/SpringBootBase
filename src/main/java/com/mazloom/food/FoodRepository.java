@@ -1,6 +1,6 @@
 package com.mazloom.food;
 
-import com.mazloom.domain.model.Food;
+import com.mazloom.data.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,8 +1,9 @@
 package com.mazloom.domain.srv;
 
-import com.mazloom.domain.model.Food;
+import com.mazloom.data.Food;
 import com.mazloom.utils.ModelUtils;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
@@ -11,6 +12,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class FoodSrv {
 
     @Schema(description = "Food identifier")

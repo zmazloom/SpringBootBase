@@ -1,4 +1,4 @@
-package com.mazloom.domain.model;
+package com.mazloom.data;
 
 import com.mazloom.domain.request.FoodRequest;
 import com.mazloom.utils.ModelUtils;

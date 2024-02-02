@@ -39,10 +39,11 @@ public class FoodController {
             @ApiResponse(code = 401, message = "not authorized!", response = ApiErrorSrv.class),
             @ApiResponse(code = 403, message = "access denied!", response = ApiErrorSrv.class),
             @ApiResponse(code = 405, message = "method not allowed!", response = ApiErrorSrv.class),
+            @ApiResponse(code = 409, message = "Food name is duplicate!", response = ApiErrorSrv.class),
             @ApiResponse(code = 500, message = "internal server error!", response = ApiErrorSrv.class)
     })
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "food", value = "Food information", required = true, dataType = "FoodCreateRequest", dataTypeClass = FoodRequest.Create.class, paramType = "body")
+            @ApiImplicitParam(name = "foodRequest", value = "Food information", required = true, dataType = "FoodCreateRequest", dataTypeClass = FoodRequest.Create.class, paramType = "body")
     })
     public ResponseEntity<Result<FoodSrv>> createFood(
             @RequestBody @NotNull @Validated FoodRequest.Create foodRequest
@@ -64,11 +65,12 @@ public class FoodController {
             @ApiResponse(code = 403, message = "access denied!", response = ApiErrorSrv.class),
             @ApiResponse(code = 404, message = "food not found!", response = ApiErrorSrv.class),
             @ApiResponse(code = 405, message = "method not allowed!", response = ApiErrorSrv.class),
+            @ApiResponse(code = 409, message = "Food name is duplicate!", response = ApiErrorSrv.class),
             @ApiResponse(code = 500, message = "internal server error!", response = ApiErrorSrv.class)
     })
     @ApiImplicitParams({
             @ApiImplicitParam(name = "foodId", value = "Food identifier", required = true, dataType = "Long", dataTypeClass = Long.class, paramType = "path", example = "1"),
-            @ApiImplicitParam(name = "food", value = "Food information", required = true, dataType = "FoodUpdateRequest", dataTypeClass = FoodRequest.Update.class, paramType = "body")
+            @ApiImplicitParam(name = "foodRequest", value = "Food information", required = true, dataType = "FoodUpdateRequest", dataTypeClass = FoodRequest.Update.class, paramType = "body")
     })
     public ResponseEntity<Result<FoodSrv>> updateFood(
             @PathVariable(name = "foodId") @NotNull Long foodId,
