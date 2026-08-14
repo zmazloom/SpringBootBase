@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Log4j2
@@ -31,6 +32,12 @@ public class FoodServiceImpl implements FoodService {
         foodRepository.saveAndFlush(food);
 
         return FoodSrv.from(food);
+    }
+
+    @Override
+    public @NotNull FoodSrv createFood(String test) {
+        int a = 2;
+        return null;
     }
 
     @Override
