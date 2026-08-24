@@ -1,0 +1,3 @@
+[config]
+company_rules_files = [".company-review/rules.md"]
+company_rules_from_default_branch = true
