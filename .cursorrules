@@ -1,0 +1,8 @@
+Variables must have meaningful and descriptive names.
+
+Single-letter variable names such as "a", "b", "x", or "y" are prohibited,
+except for conventional loop counters.
+
+Methods should not exceed 50 lines.
+
+Controllers must not contain business logic.
