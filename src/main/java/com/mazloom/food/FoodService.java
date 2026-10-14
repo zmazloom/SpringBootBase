@@ -20,6 +20,13 @@ public interface FoodService {
     FoodSrv createFood(@NotNull FoodRequest.Create foodRequest);
 
     /**
+     * Create new food.
+     *
+     * @param testtt new food information.
+     */
+    FoodSrv createFood(@NotNull String test);
+
+    /**
      * Update food information.
      *
      * @param foodRequest new food information.

@@ -56,6 +56,31 @@ public class FoodController {
                 .get());
     }
 
+    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAnyRole('USER')")
+    @ApiOperation(value = "Create food.", httpMethod = "POST")
+    @ApiResponses({
+            @ApiResponse(code = 400, message = "bad request!", response = ApiErrorSrv.class),
+            @ApiResponse(code = 401, message = "not authorized!", response = ApiErrorSrv.class),
+            @ApiResponse(code = 403, message = "access denied!", response = ApiErrorSrv.class),
+            @ApiResponse(code = 405, message = "method not allowed!", response = ApiErrorSrv.class),
+            @ApiResponse(code = 409, message = "Food name is duplicate!", response = ApiErrorSrv.class),
+            @ApiResponse(code = 500, message = "internal server error!", response = ApiErrorSrv.class)
+    })
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "foodRequest", value = "Food information", required = true, dataType = "FoodCreateRequest", dataTypeClass = FoodRequest.Create.class, paramType = "body")
+    })
+    public ResponseEntity<Result<FoodSrv>> createFood(
+            @RequestBody @NotNull @Validated FoodRequest.Create foodRequest
+    ) {
+
+        return ResponseEntity.ok(ResFact.<FoodSrv>build()
+                .setMessage(FoodMessage.foodCreated())
+                .setResult(foodService.createFood(foodRequest))
+                .setTotal(1)
+                .get());
+    }
+
     @PutMapping(value = "/{foodId}", produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAnyRole('USER')")
     @ApiOperation(value = "Update food.", httpMethod = "PUT")
